@@ -177,7 +177,7 @@ function GENERATEPDF(){
     const {jsPDF}=window.jspdf;
     const pdf=new jsPDF();
 
-    pdf.text("VAPEATALL INVOICE",14,15);
+    pdf.text("ZIA DISTRIBUTOR LTD ORDER",14,15);
     pdf.text(`INVOICE: ${INVOICE}`,14,22);
     pdf.text(`NAME: ${NAME.value}`,14,29);
     pdf.text(`PHONE: ${PHONE.value}`,14,36);
@@ -203,7 +203,7 @@ function GENERATEPDF(){
 
 /* FULL DETAILS MESSAGE */
 function BUILDINVOICE(){
-    let text=`VAPEATALL INVOICE\nINVOICE: ${INVOICE}\n\nCUSTOMER:\n${NAME.value}\n${PHONE.value}\n${EMAIL.value}\n\nITEMS:\n`;
+    let text=`ZIA DISTRIBUTOR LTD ORDER\nINVOICE: ${INVOICE}\n\nCUSTOMER:\n${NAME.value}\n${PHONE.value}\n${EMAIL.value}\n\nITEMS:\n`;
     CART.forEach(i=>{
         text+=`${i.category} - ${i.product} (${i.qty}) £${(i.qty*i.price).toFixed(2)}\n`;
     });
