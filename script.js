@@ -1,52 +1,125 @@
 const DATA = {
-"CRYSTAL 600 KIT": {PRICE:17.99, PRODUCTS:[
-"LEMON LIME","CHERRY ICE","BLUE FUSION","PINK LEMONADE","STRAWBERRY BLAST","MENTHOL","BULL ICE","COLA ICE"
+
+"CRYSTAL 600 KIT": { PRICE: 17.99, PRODUCTS: [
+"LEMON LIME","CHERRY ICE","BLUE FUSION","PINK LEMONADE","STRAWBERRY BURST","STRAWBERRY BLAST",
+"BLUEBERRY SOUR RASPBERRY","BLUEBERRY RASPBERRY","PEACH ICE","PINEAPPLE PEACH MANGO",
+"GREEN GRAPE","BLUEBERRY CHERRY CRANBERRY","WATERMELON","STRAWBERRY KIWI",
+"STRAWBERRY RASPBERRY","FRESH MENTHOL MOJITO","SOUR PINEAPPLE","BLUE RAZZ LEMONADE",
+"APPLE PEACH","TOBACCO","MENTHOL","GAMI RARE","BULL ICE","COLA ICE","VMT","FIZZY CHERRY",
+"FRUIT MEDLEY","KIWIFRUIT GUAVA","BERRY","LEMON PEACH PASSION FRUIT",
+"WATERMELON STRAWBERRY","SOUR APPLE","BLUEBERRY PEACH ICE","MANGO ICE"
 ]},
-"CRYSTAL 600 POD": {PRICE:11.99, PRODUCTS:[
-"BULL ICE","MENTHOL","PEACH","TOBACCO","BLUEBERRY RASPBERRY","STRAWBERRY RASPBERRY"
+
+"CRYSTAL 600 POD": { PRICE: 11.99, PRODUCTS: [
+"BULL ICE","MENTHOL","BLUEBERRY CHERRY CRANBERRY","STRAWBERRY RASPBERRY",
+"BLUEBERRY RASPBERRY","WATERMELON STRAWBERRY","PEACH","TOBACCO"
 ]},
-"ELF BAR 600 KIT": {PRICE:17.99, PRODUCTS:[
-"GRAPE","PEACH","BLUEBERRY","BANANA ICE","WATERMELON"
+
+"LOSTMARY 30K KIT": { PRICE: 29.25, PRODUCTS: [
+"DRINK EDITION","BERRY EDITION","FIZZY EDITION","BLUEBERRY SOUR RASPBERRY",
+"PINEAPPLE EDITION","BLUE EDITION","LEMON LIME","PINEAPPLE ICE",
+"WATERMELON EDITION","CHERRY ICE","STRAWBERRY ICE","TRIPLE MANGO",
+"BLUEBERRY EDITION","KIWI PASSION FRUIT GUAVA","RED EDITION","GREEN EDITION",
+"PURPLE EDITION","CHERRY EDITION","DUBAI CHOCOLATE","JUICY PEACH",
+"MANGO EDITION","SPECIAL EDITION","COLA EDITION"
 ]},
-"ELF BAR 600 POD": {PRICE:20.25, PRODUCTS:[
-"MAD BLUE","GRAPE","CHERRY ICE","STRAWBERRY KIWI","COLA"
+
+"LOSTMARY 15K POD": { PRICE: 17.50, PRODUCTS: [
+"PINEAPPLE PEACH MANGO","PINK LEMONADE","STRAWBERRY WATERMELON","TRIPLE MANGO",
+"RASPBERRY WATERMELON","PINEAPPLE ICE","BERRY MIX","CHERRY ICE",
+"STRAWBERRY ICE","BANANA ICE","STRAWBERRY RASPBERRY CHERRY","COLA",
+"BLUEBERRY RASPBERRY GAMI","WATERMELON","JUICY PEACH",
+"BLUEBERRY RASPBERRY ICE","GRAPE BERRY","DUBAI CHOCOLATE","GRAPE ICE",
+"KIWI PASSION FRUIT GUAVA","SUMMER GRAPE"
 ]},
-"LOSTMARY 30K KIT": {PRICE:29.25, PRODUCTS:[
-"BERRY","FIZZY","BLUEBERRY","TRIPLE MANGO","DUBAI CHOCOLATE","COLA"
+
+"ELF BAR 600 KIT": { PRICE: 17.99, PRODUCTS: [
+"GRAPE","PEACH","BLUEBERRY","STRAWBERRY RASPBERRY CHERRY ICE",
+"KIWI PASSION FRUIT GUAVA","APPLE PEACH","BLUE RAZZ LEMONADE",
+"PINK LEMONADE","CHERRY COLA","ELF TURBO","BLUEBERRY CRANBERRY CHERRY",
+"STRAWBERRY KIWI","WATERMELON BG","WATERMELON","MAD BLUE",
+"BANANA ICE","BLUEBERRY SOUR RASPBERRY"
 ]},
-"PIXEL 8K DUO XL KIT": {PRICE:21.99, PRODUCTS:[
-"JUICY PEACH","BLUE RAZZ","WATERMELON ICE","DOUBLE APPLE","STRAWBERRY WATERMELON"
+
+"ELF BAR 600 POD": { PRICE: 20.25, PRODUCTS: [
+"MAD BLUE","GRAPE","CHERRY ICE","BLUEBERRY RASPBERRY",
+"BLUE RAZZ LEMONADE","APPLE PEACH","STRAWBERRY ICE",
+"STRAWBERRY KIWI","CHERRY COLA"
+]},
+
+"IVG 10K PRO KIT": { PRICE: 20.50, PRODUCTS: [
+"STRAWBERRY RASPBERRY CHERRY","BLUE RASPBERRY ICE","STRAWBERRY ICE",
+"FRESH MENTHOL MOJITO","GRAPE ICE","LEMON LIME","FIZZY STRAWBERRY",
+"DOUBLE MANGO","STRAWBERRY WATERMELON","FRESH MINT","RASPBERRY BLAST",
+"PINK LEMONADE","KIWI PASSION GUAVA","PINEAPPLE","BLUE SOUR RASPBERRY",
+"PEACH ICE","RED SOUR RASPBERRY","CHERRY ICE","BLUE RAZZ RETRO",
+"FIZZY ORANGE","GREEN FRUIT","SOUR CHERRY WATERMELON",
+"BANANA","DOUBLE APPLE","MIXED BERRY","TOBACCO"
+]},
+
+"IVG 10K PRO POD": { PRICE: 15.59, PRODUCTS: [
+"PEACH ICE","PINK LEMONADE","BLUEBERRY MINT","RASPBERRY BLAST",
+"DOUBLE APPLE","GREEN FRUIT","GRAPE ICE","CLASSIC MENTHOL",
+"STRAWBERRY WATERMELON","BLUE RAZZ RETRO","BANANA ICE","TOBACCO",
+"MIXED BERRY","FRESH MINT","SOUR CHERRY WATERMELON","LEMON LIME",
+"FIZZY ORANGE","BLUE RASPBERRY ICE","STRAWBERRY KIWI",
+"DOUBLE MANGO","KIWI PASSION GUAVA","PINEAPPLE ICE",
+"FIZZY CHERRY","FIZZY STRAWBERRY","BLUE SOUR RASPBERRY",
+"RED SOUR RASPBERRY","STRAWBERRY RASPBERRY CHERRY",
+"STRAWBERRY ICE","CHERRY ICE","FRESH MENTHOL MOJITO"
+]},
+
+"PIXEL 8K DUO XL KIT": { PRICE: 21.99, PRODUCTS: [
+"JUICY PEACH","BLUE RAZZ COTTON","BLUE RAZZ CHERRY","BLUEBERRY RASPBERRY",
+"RASPBERRY WATERMELON","WATERMELON ICE","SOUR PINEAPPLE MANGO",
+"CHERRY SOUR RASPBERRY","CHERRY POP","SUKARA RASPBERRY","PINK RAZZ",
+"BLUE CHERRY CRANBERRY","PURPLE DREAM","TROPICAL WAVE","DOUBLE APPLE",
+"BLUEBERRY RAZZ CHERRY","LEMON LIME","BLUEBERRY SOUR RAZZ",
+"COLA LIME","CHERRY ICE","STRAWBERRY WATERMELON","PINK LEMONADE",
+"HAWAIIAN OASIS","PIXEL DUST","FRESH MINT","BLUE MAGIC",
+"STRAWBERRY BURST","RAINBOW RUSH","SPEARMINT MINT"
+]},
+
+"PIXEL 8K DUO XL POD": { PRICE: 16.99, PRODUCTS: [
+"PIXEL STRAWBERRY BURST","RAINBOW RUSH","JUICY PEACH","DOUBLE APPLE",
+"CHERRY POP","BLUEBERRY RASPBERRY","BLUE CHERRY CRANBERRY",
+"PINEAPPLE ICE","BLUE MANGO","STARMIX","BLUE RAZZ CHERRY",
+"TROPICAL WAVE","COLA LIME","HAWAIIAN OASIS","FRESH MINT",
+"PARADISE PUNCH","STRAWBERRY WATERMELON","LEMON LIME",
+"BLUE RAZZ LEMONADE","WATERMELON ICE","SOUR PINEAPPLE MANGO",
+"STRAWBERRY KIWI BUBBA","RASPBERRY WATERMELON",
+"CHERRY LEMONADE","SOUR CHERRY APPLE","CHERRY SOUR RASPBERRY",
+"BLUEBERRY SOUR RASPBERRY","PINK RAZZ"
 ]}
 };
 
-const CATEGORY = document.getElementById("CATEGORY");
-const PRODUCT = document.getElementById("PRODUCT");
-const QTY = document.getElementById("QTY");
-const PREVIEW = document.getElementById("PREVIEWPRICE");
-const CARTDIV = document.getElementById("CARTITEMS");
+const CATEGORY=document.getElementById("CATEGORY");
+const PRODUCT=document.getElementById("PRODUCT");
+const QTY=document.getElementById("QTY");
+const PREVIEW=document.getElementById("PREVIEWPRICE");
+const CARTDIV=document.getElementById("CARTITEMS");
+const SUB=document.getElementById("SUBTOTAL");
+const VAT=document.getElementById("VAT");
+const TOTAL=document.getElementById("TOTAL");
 
-const SUB = document.getElementById("SUBTOTAL");
-const VAT = document.getElementById("VAT");
-const TOTAL = document.getElementById("TOTAL");
+const NAME=document.getElementById("NAME");
+const PHONE=document.getElementById("PHONE");
+const EMAIL=document.getElementById("EMAIL");
 
-const NAME = document.getElementById("NAME");
-const PHONE = document.getElementById("PHONE");
-const EMAIL = document.getElementById("EMAIL");
+let CART=[];
+const INVOICE="VAT-"+Date.now();
 
-let CART = [];
-
-const INVOICE = "VAT-" + Date.now();
-
-for (let c in DATA) {
-    CATEGORY.innerHTML += `<OPTION>${c}</OPTION>`;
+/* LOAD CATEGORIES */
+for(let c in DATA){
+    CATEGORY.innerHTML+=`<OPTION>${c}</OPTION>`;
 }
 LOADPRODUCTS();
 UPDATEPREVIEW();
 
-CATEGORY.onchange = () => {LOADPRODUCTS(); UPDATEPREVIEW();}
-QTY.oninput = UPDATEPREVIEW;
+CATEGORY.onchange=()=>{LOADPRODUCTS();UPDATEPREVIEW();}
+QTY.oninput=UPDATEPREVIEW;
 
-document.getElementById("ADD_BTN").onclick = ADD;
+document.getElementById("ADD_BTN").onclick=ADD;
 
 function LOADPRODUCTS(){
     PRODUCT.innerHTML="";
@@ -56,19 +129,18 @@ function LOADPRODUCTS(){
 }
 
 function UPDATEPREVIEW(){
-    PREVIEW.innerText = (DATA[CATEGORY.value].PRICE * QTY.value).toFixed(2);
+    PREVIEW.innerText=(DATA[CATEGORY.value].PRICE*QTY.value).toFixed(2);
 }
 
 function ADD(){
-    if(!NAME.value || !PHONE.value){
+    if(!NAME.value||!PHONE.value){
         alert("ENTER CUSTOMER DETAILS FIRST");
         return;
     }
-
     CART.push({
         category:CATEGORY.value,
         product:PRODUCT.value,
-        qty:parseInt(QTY.value),
+        qty:+QTY.value,
         price:DATA[CATEGORY.value].PRICE
     });
     RENDER();
@@ -81,14 +153,10 @@ function RENDER(){
     CART.forEach((i,index)=>{
         let line=i.qty*i.price;
         subtotal+=line;
-
         CARTDIV.innerHTML+=`
         <DIV CLASS="CART-ITEM">
         <B>${i.category}</B><BR>${i.product}<BR>
-        £${i.price} × 
-        <INPUT TYPE="NUMBER" VALUE="${i.qty}" MIN="1" 
-        ONINPUT="UPDATEQTY(${index},this.value)">
-        = £${line.toFixed(2)}
+        £${i.price} × ${i.qty} = £${line.toFixed(2)}
         <BUTTON CLASS="REMOVE" ONCLICK="REMOVE(${index})">REMOVE</BUTTON>
         </DIV>`;
     });
@@ -99,47 +167,54 @@ function RENDER(){
     TOTAL.innerText=(subtotal+vat).toFixed(2);
 }
 
-function UPDATEQTY(i,val){
-    CART[i].qty=parseInt(val);
-    RENDER();
-}
-
 function REMOVE(i){
     CART.splice(i,1);
     RENDER();
 }
 
+/* PDF WITH TABLE */
 function GENERATEPDF(){
     const {jsPDF}=window.jspdf;
     const pdf=new jsPDF();
-    let y=15;
 
-    pdf.text("VAPEATALL INVOICE",20,y); y+=8;
-    pdf.text(`INVOICE: ${INVOICE}`,20,y); y+=6;
-    pdf.text(`NAME: ${NAME.value}`,20,y); y+=6;
-    pdf.text(`PHONE: ${PHONE.value}`,20,y); y+=10;
+    pdf.text("VAPEATALL INVOICE",14,15);
+    pdf.text(`INVOICE: ${INVOICE}`,14,22);
+    pdf.text(`NAME: ${NAME.value}`,14,29);
+    pdf.text(`PHONE: ${PHONE.value}`,14,36);
+    pdf.text(`EMAIL: ${EMAIL.value}`,14,43);
 
-    CART.forEach(i=>{
-        pdf.text(`${i.category} ${i.product} (${i.qty}) £${(i.qty*i.price).toFixed(2)}`,20,y);
-        y+=6;
+    const rows=CART.map(i=>[
+        i.category,i.product,i.qty,"£"+i.price.toFixed(2),"£"+(i.qty*i.price).toFixed(2)
+    ]);
+
+    pdf.autoTable({
+        startY:50,
+        head:[["CATEGORY","PRODUCT","QTY","PRICE","TOTAL"]],
+        body:rows
     });
 
-    y+=6;
-    pdf.text(`TOTAL £${TOTAL.innerText}`,20,y);
+    let y=pdf.lastAutoTable.finalY+10;
+    pdf.text(`SUBTOTAL: £${SUB.innerText}`,14,y);
+    pdf.text(`VAT (20%): £${VAT.innerText}`,14,y+7);
+    pdf.text(`FINAL TOTAL: £${TOTAL.innerText}`,14,y+14);
+
     pdf.save(`${INVOICE}.PDF`);
-    RESET();
+}
+
+/* FULL DETAILS MESSAGE */
+function BUILDINVOICE(){
+    let text=`VAPEATALL INVOICE\nINVOICE: ${INVOICE}\n\nCUSTOMER:\n${NAME.value}\n${PHONE.value}\n${EMAIL.value}\n\nITEMS:\n`;
+    CART.forEach(i=>{
+        text+=`${i.category} - ${i.product} (${i.qty}) £${(i.qty*i.price).toFixed(2)}\n`;
+    });
+    text+=`\nSUBTOTAL £${SUB.innerText}\nVAT £${VAT.innerText}\nFINAL TOTAL £${TOTAL.innerText}`;
+    return encodeURIComponent(text);
 }
 
 function SENDWHATSAPP(){
-    window.open(`https://wa.me/447404156629?text=INVOICE ${INVOICE} TOTAL £${TOTAL.innerText}`);
+    window.open(`https://wa.me/447404156629?text=${BUILDINVOICE()}`);
 }
 
 function SENDEMAIL(){
-    window.location=`mailto:ziap.distributor@gmail.com?subject=INVOICE ${INVOICE}&body=TOTAL £${TOTAL.innerText}`;
-}
-
-function RESET(){
-    CART=[];
-    RENDER();
-    NAME.value=PHONE.value=EMAIL.value="";
+    window.location=`mailto:ziap.distributor@gmail.com?subject=INVOICE ${INVOICE}&body=${BUILDINVOICE()}`;
 }
