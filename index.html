@@ -1,67 +1,53 @@
 <!DOCTYPE HTML>
-<HTML>
-<HEAD>
-<META CHARSET="UTF-8">
-<META NAME="VIEWPORT" CONTENT="WIDTH=DEVICE-WIDTH, INITIAL-SCALE=1.0">
-<TITLE>ZIA DISTRIBUTOR LTD ORDER SYSTEM</TITLE>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIA DISTRIBUTOR LTD ORDER SYSTEM</title>
 
-<LINK REL="stylesheet" HREF="style.css">
-<SCRIPT SRC="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></SCRIPT>
-<SCRIPT SRC="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></SCRIPT>
-</HEAD>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+</head>
 
-<BODY>
+<body>
 
-<HEADER>
-    <IMG SRC="logo.png" CLASS="LOGO">
-    <H1>ZIA DISTRIBUTOR LTD</H1>
-    <P>+44 7404 156629 | ZIAP.DISTRIBUTOR@GMAIL.COM</P>
-</HEADER>
+<header>
+  <h1>ZIA DISTRIBUTOR LTD</h1>
+</header>
 
-<MAIN CLASS="CONTAINER">
+<main class="container">
 
-<!-- CUSTOMER -->
-<SECTION CLASS="BOX">
-<H2>CUSTOMER DETAILS</H2>
-<INPUT ID="NAME" PLACEHOLDER="FULL NAME *">
-<INPUT ID="PHONE" PLACEHOLDER="CONTACT NUMBER *">
-<INPUT ID="EMAIL" PLACEHOLDER="EMAIL (OPTIONAL)">
-</SECTION>
+<section class="box">
+<h2>CUSTOMER DETAILS</h2>
+<input id="NAME" placeholder="FULL NAME *">
+<input id="PHONE" placeholder="CONTACT NUMBER *">
+<input id="EMAIL" placeholder="EMAIL (OPTIONAL)">
+</section>
 
-<!-- PRODUCT -->
-<SECTION CLASS="BOX">
-<H2>ADD PRODUCT</H2>
+<section class="box">
+<h2>ADD PRODUCT</h2>
+<select id="CATEGORY"></select>
+<select id="PRODUCT"></select>
+<input type="number" id="QTY" value="1" min="1">
+<p class="preview">PRICE: £<span id="PREVIEWPRICE">0.00</span></p>
+<button id="ADD_BTN">ADD TO CART</button>
+</section>
 
-<SELECT ID="CATEGORY"></SELECT>
-<SELECT ID="PRODUCT"></SELECT>
-<INPUT TYPE="NUMBER" ID="QTY" VALUE="1" MIN="1">
+<section class="box">
+<h2>CART</h2>
+<div id="CARTITEMS"></div>
+<hr>
+<p>SUBTOTAL £<span id="SUBTOTAL">0</span></p>
+<p>VAT £<span id="VAT">0</span></p>
+<h3>TOTAL £<span id="TOTAL">0</span></h3>
+<button onclick="GENERATEPDF()">DOWNLOAD PDF</button>
+<button onclick="window.print()">PRINT</button>
+<button onclick="SENDWHATSAPP()">WHATSAPP</button>
+</section>
 
-<P CLASS="PREVIEW">PRICE: £<SPAN ID="PREVIEWPRICE">0.00</SPAN></P>
+</main>
 
-<BUTTON ID="ADD_BTN">ADD TO CART</BUTTON>
-</SECTION>
-
-<!-- CART -->
-<SECTION CLASS="BOX">
-<H2>CART</H2>
-<DIV ID="CARTITEMS"></DIV>
-
-<HR>
-
-<P>SUBTOTAL: £<SPAN ID="SUBTOTAL">0.00</SPAN></P>
-<P>VAT (20%): £<SPAN ID="VAT">0.00</SPAN></P>
-<H3>FINAL TOTAL: £<SPAN ID="TOTAL">0.00</SPAN></H3>
-
-<BUTTON ONCLICK="GENERATEPDF()">DOWNLOAD PDF</BUTTON>
-<BUTTON ONCLICK="WINDOW.PRINT()">PRINT</BUTTON>
-<BUTTON ONCLICK="SENDWHATSAPP()">WHATSAPP</BUTTON>
-<BUTTON ONCLICK="SENDEMAIL()">EMAIL</BUTTON>
-</SECTION>
-
-</MAIN>
-
-<FOOTER>© ZIA DISTRIBUTOR LTD</FOOTER>
-
-<SCRIPT SRC="script.js"></SCRIPT>
-</BODY>
-</HTML>
+<script src="script.js"></script>
+</body>
+</html>

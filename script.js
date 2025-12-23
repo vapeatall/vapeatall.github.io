@@ -1,220 +1,193 @@
-const DATA = {
+const API = "https://script.google.com/macros/s/AKfycbxE75ofD7QkdWE3ONjNmIyd1u_-U1wqQy3ck4JH8l4UPlBSmAMkB2TUx-woqL0kFS25OQ/exec";
 
-"CRYSTAL 600 KIT": { PRICE: 17.99, PRODUCTS: [
-"LEMON LIME","CHERRY ICE","BLUE FUSION","PINK LEMONADE","STRAWBERRY BURST","STRAWBERRY BLAST",
-"BLUEBERRY SOUR RASPBERRY","BLUEBERRY RASPBERRY","PEACH ICE","PINEAPPLE PEACH MANGO",
-"GREEN GRAPE","BLUEBERRY CHERRY CRANBERRY","WATERMELON","STRAWBERRY KIWI",
-"STRAWBERRY RASPBERRY","FRESH MENTHOL MOJITO","SOUR PINEAPPLE","BLUE RAZZ LEMONADE",
-"APPLE PEACH","TOBACCO","MENTHOL","GAMI RARE","BULL ICE","COLA ICE","VMT","FIZZY CHERRY",
-"FRUIT MEDLEY","KIWIFRUIT GUAVA","BERRY","LEMON PEACH PASSION FRUIT",
-"WATERMELON STRAWBERRY","SOUR APPLE","BLUEBERRY PEACH ICE","MANGO ICE"
-]},
+let DATA = {};
+let CART = JSON.parse(localStorage.getItem("cart")) || [];
+const INVOICE = "INV-" + Date.now();
 
-"CRYSTAL 600 POD": { PRICE: 11.99, PRODUCTS: [
-"BULL ICE","MENTHOL","BLUEBERRY CHERRY CRANBERRY","STRAWBERRY RASPBERRY",
-"BLUEBERRY RASPBERRY","WATERMELON STRAWBERRY","PEACH","TOBACCO"
-]},
+// DOM elements
+const CATEGORY = document.getElementById("CATEGORY");
+const PRODUCT = document.getElementById("PRODUCT");
+const QTY = document.getElementById("QTY");
+const PREVIEWPRICE = document.getElementById("PREVIEWPRICE");
 
-"LOSTMARY 30K KIT": { PRICE: 29.25, PRODUCTS: [
-"DRINK EDITION","BERRY EDITION","FIZZY EDITION","BLUEBERRY SOUR RASPBERRY",
-"PINEAPPLE EDITION","BLUE EDITION","LEMON LIME","PINEAPPLE ICE",
-"WATERMELON EDITION","CHERRY ICE","STRAWBERRY ICE","TRIPLE MANGO",
-"BLUEBERRY EDITION","KIWI PASSION FRUIT GUAVA","RED EDITION","GREEN EDITION",
-"PURPLE EDITION","CHERRY EDITION","DUBAI CHOCOLATE","JUICY PEACH",
-"MANGO EDITION","SPECIAL EDITION","COLA EDITION"
-]},
+const NAME = document.getElementById("NAME");
+const PHONE = document.getElementById("PHONE");
+const EMAIL = document.getElementById("EMAIL");
 
-"LOSTMARY 15K POD": { PRICE: 17.50, PRODUCTS: [
-"PINEAPPLE PEACH MANGO","PINK LEMONADE","STRAWBERRY WATERMELON","TRIPLE MANGO",
-"RASPBERRY WATERMELON","PINEAPPLE ICE","BERRY MIX","CHERRY ICE",
-"STRAWBERRY ICE","BANANA ICE","STRAWBERRY RASPBERRY CHERRY","COLA",
-"BLUEBERRY RASPBERRY GAMI","WATERMELON","JUICY PEACH",
-"BLUEBERRY RASPBERRY ICE","GRAPE BERRY","DUBAI CHOCOLATE","GRAPE ICE",
-"KIWI PASSION FRUIT GUAVA","SUMMER GRAPE"
-]},
+const CARTITEMS = document.getElementById("CARTITEMS");
+const SUBTOTAL = document.getElementById("SUBTOTAL");
+const VAT = document.getElementById("VAT");
+const TOTAL = document.getElementById("TOTAL");
+const ADD_BTN = document.getElementById("ADD_BTN");
 
-"ELF BAR 600 KIT": { PRICE: 17.99, PRODUCTS: [
-"GRAPE","PEACH","BLUEBERRY","STRAWBERRY RASPBERRY CHERRY ICE",
-"KIWI PASSION FRUIT GUAVA","APPLE PEACH","BLUE RAZZ LEMONADE",
-"PINK LEMONADE","CHERRY COLA","ELF TURBO","BLUEBERRY CRANBERRY CHERRY",
-"STRAWBERRY KIWI","WATERMELON BG","WATERMELON","MAD BLUE",
-"BANANA ICE","BLUEBERRY SOUR RASPBERRY"
-]},
-
-"ELF BAR 600 POD": { PRICE: 20.25, PRODUCTS: [
-"MAD BLUE","GRAPE","CHERRY ICE","BLUEBERRY RASPBERRY",
-"BLUE RAZZ LEMONADE","APPLE PEACH","STRAWBERRY ICE",
-"STRAWBERRY KIWI","CHERRY COLA"
-]},
-
-"IVG 10K PRO KIT": { PRICE: 20.50, PRODUCTS: [
-"STRAWBERRY RASPBERRY CHERRY","BLUE RASPBERRY ICE","STRAWBERRY ICE",
-"FRESH MENTHOL MOJITO","GRAPE ICE","LEMON LIME","FIZZY STRAWBERRY",
-"DOUBLE MANGO","STRAWBERRY WATERMELON","FRESH MINT","RASPBERRY BLAST",
-"PINK LEMONADE","KIWI PASSION GUAVA","PINEAPPLE","BLUE SOUR RASPBERRY",
-"PEACH ICE","RED SOUR RASPBERRY","CHERRY ICE","BLUE RAZZ RETRO",
-"FIZZY ORANGE","GREEN FRUIT","SOUR CHERRY WATERMELON",
-"BANANA","DOUBLE APPLE","MIXED BERRY","TOBACCO"
-]},
-
-"IVG 10K PRO POD": { PRICE: 15.59, PRODUCTS: [
-"PEACH ICE","PINK LEMONADE","BLUEBERRY MINT","RASPBERRY BLAST",
-"DOUBLE APPLE","GREEN FRUIT","GRAPE ICE","CLASSIC MENTHOL",
-"STRAWBERRY WATERMELON","BLUE RAZZ RETRO","BANANA ICE","TOBACCO",
-"MIXED BERRY","FRESH MINT","SOUR CHERRY WATERMELON","LEMON LIME",
-"FIZZY ORANGE","BLUE RASPBERRY ICE","STRAWBERRY KIWI",
-"DOUBLE MANGO","KIWI PASSION GUAVA","PINEAPPLE ICE",
-"FIZZY CHERRY","FIZZY STRAWBERRY","BLUE SOUR RASPBERRY",
-"RED SOUR RASPBERRY","STRAWBERRY RASPBERRY CHERRY",
-"STRAWBERRY ICE","CHERRY ICE","FRESH MENTHOL MOJITO"
-]},
-
-"PIXEL 8K DUO XL KIT": { PRICE: 21.99, PRODUCTS: [
-"JUICY PEACH","BLUE RAZZ COTTON","BLUE RAZZ CHERRY","BLUEBERRY RASPBERRY",
-"RASPBERRY WATERMELON","WATERMELON ICE","SOUR PINEAPPLE MANGO",
-"CHERRY SOUR RASPBERRY","CHERRY POP","SUKARA RASPBERRY","PINK RAZZ",
-"BLUE CHERRY CRANBERRY","PURPLE DREAM","TROPICAL WAVE","DOUBLE APPLE",
-"BLUEBERRY RAZZ CHERRY","LEMON LIME","BLUEBERRY SOUR RAZZ",
-"COLA LIME","CHERRY ICE","STRAWBERRY WATERMELON","PINK LEMONADE",
-"HAWAIIAN OASIS","PIXEL DUST","FRESH MINT","BLUE MAGIC",
-"STRAWBERRY BURST","RAINBOW RUSH","SPEARMINT MINT"
-]},
-
-"PIXEL 8K DUO XL POD": { PRICE: 16.99, PRODUCTS: [
-"PIXEL STRAWBERRY BURST","RAINBOW RUSH","JUICY PEACH","DOUBLE APPLE",
-"CHERRY POP","BLUEBERRY RASPBERRY","BLUE CHERRY CRANBERRY",
-"PINEAPPLE ICE","BLUE MANGO","STARMIX","BLUE RAZZ CHERRY",
-"TROPICAL WAVE","COLA LIME","HAWAIIAN OASIS","FRESH MINT",
-"PARADISE PUNCH","STRAWBERRY WATERMELON","LEMON LIME",
-"BLUE RAZZ LEMONADE","WATERMELON ICE","SOUR PINEAPPLE MANGO",
-"STRAWBERRY KIWI BUBBA","RASPBERRY WATERMELON",
-"CHERRY LEMONADE","SOUR CHERRY APPLE","CHERRY SOUR RASPBERRY",
-"BLUEBERRY SOUR RASPBERRY","PINK RAZZ"
-]}
-};
-
-const CATEGORY=document.getElementById("CATEGORY");
-const PRODUCT=document.getElementById("PRODUCT");
-const QTY=document.getElementById("QTY");
-const PREVIEW=document.getElementById("PREVIEWPRICE");
-const CARTDIV=document.getElementById("CARTITEMS");
-const SUB=document.getElementById("SUBTOTAL");
-const VAT=document.getElementById("VAT");
-const TOTAL=document.getElementById("TOTAL");
-
-const NAME=document.getElementById("NAME");
-const PHONE=document.getElementById("PHONE");
-const EMAIL=document.getElementById("EMAIL");
-
-let CART=[];
-const INVOICE="VAT-"+Date.now();
-
-/* LOAD CATEGORIES */
-for(let c in DATA){
-    CATEGORY.innerHTML+=`<OPTION>${c}</OPTION>`;
-}
-LOADPRODUCTS();
-UPDATEPREVIEW();
-
-CATEGORY.onchange=()=>{LOADPRODUCTS();UPDATEPREVIEW();}
-QTY.oninput=UPDATEPREVIEW;
-
-document.getElementById("ADD_BTN").onclick=ADD;
-
-function LOADPRODUCTS(){
-    PRODUCT.innerHTML="";
-    DATA[CATEGORY.value].PRODUCTS.forEach(p=>{
-        PRODUCT.innerHTML+=`<OPTION>${p}</OPTION>`;
-    });
+// Initialize
+async function init() {
+  const res = await fetch(API + "?t=" + Date.now());
+  DATA = await res.json();
+  CATEGORY.innerHTML = "";
+  for (let c in DATA) CATEGORY.innerHTML += `<option>${c}</option>`;
+  loadProducts();
+  render();
 }
 
-function UPDATEPREVIEW(){
-    PREVIEW.innerText=(DATA[CATEGORY.value].PRICE*QTY.value).toFixed(2);
+function loadProducts() {
+  PRODUCT.innerHTML = "";
+  DATA[CATEGORY.value].products
+    .filter(p => p.qty > 0)
+    .forEach(p => PRODUCT.innerHTML += `<option>${p.name}</option>`);
+  updatePreview();
 }
 
-function ADD(){
-    if(!NAME.value||!PHONE.value){
-        alert("ENTER CUSTOMER DETAILS FIRST");
-        return;
-    }
-    CART.push({
-        category:CATEGORY.value,
-        product:PRODUCT.value,
-        qty:+QTY.value,
-        price:DATA[CATEGORY.value].PRICE
-    });
-    RENDER();
+function updatePreview() {
+  PREVIEWPRICE.innerText = (DATA[CATEGORY.value].price * QTY.value).toFixed(2);
 }
 
-function RENDER(){
-    CARTDIV.innerHTML="";
-    let subtotal=0;
+// Event listeners
+CATEGORY.onchange = () => { loadProducts(); }
+QTY.oninput = updatePreview;
 
-    CART.forEach((i,index)=>{
-        let line=i.qty*i.price;
-        subtotal+=line;
-        CARTDIV.innerHTML+=`
-        <DIV CLASS="CART-ITEM">
-        <B>${i.category}</B><BR>${i.product}<BR>
-        £${i.price} × ${i.qty} = £${line.toFixed(2)}
-        <BUTTON CLASS="REMOVE" ONCLICK="REMOVE(${index})">REMOVE</BUTTON>
-        </DIV>`;
-    });
+// Add to cart
+ADD_BTN.onclick = () => {
+  if (!NAME.value || !PHONE.value) {
+    alert("Please fill in your personal details above before adding to cart.");
+    return;
+  }
 
-    let vat=subtotal*0.20;
-    SUB.innerText=subtotal.toFixed(2);
-    VAT.innerText=vat.toFixed(2);
-    TOTAL.innerText=(subtotal+vat).toFixed(2);
+  const selectedCategory = CATEGORY.value;
+  const selectedProduct = PRODUCT.value;
+  const qty = parseInt(QTY.value);
+  const stock = DATA[selectedCategory].products.find(p => p.name === selectedProduct).qty;
+
+  if (qty > stock) {
+    alert(`Please enter a quantity less than or equal to available stock (${stock})`);
+    return;
+  }
+
+  // Add to cart
+  CART.push({
+    cat: selectedCategory,
+    prod: selectedProduct,
+    qty: qty,
+    price: DATA[selectedCategory].price
+  });
+
+  localStorage.setItem("cart", JSON.stringify(CART));
+  render();
 }
 
-function REMOVE(i){
-    CART.splice(i,1);
-    RENDER();
+// Render cart
+function render() {
+  CARTITEMS.innerHTML = "";
+  let subtotal = 0;
+
+  CART.forEach((item, index) => {
+    const lineTotal = item.price * item.qty;
+    subtotal += lineTotal;
+
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+      <b>${item.cat}</b><br>${item.prod} <br>
+      £${item.price.toFixed(2)} × ${item.qty} = £${lineTotal.toFixed(2)}
+      <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+    `;
+    CARTITEMS.appendChild(div);
+  });
+
+  SUBTOTAL.innerText = subtotal.toFixed(2);
+  const vat = subtotal * 0.2;
+  VAT.innerText = vat.toFixed(2);
+  TOTAL.innerText = (subtotal + vat).toFixed(2);
 }
 
-/* PDF WITH TABLE */
-function GENERATEPDF(){
-    const {jsPDF}=window.jspdf;
-    const pdf=new jsPDF();
-
-    pdf.text("ZIA DISTRIBUTOR LTD ORDER",14,15);
-    pdf.text(`INVOICE: ${INVOICE}`,14,22);
-    pdf.text(`NAME: ${NAME.value}`,14,29);
-    pdf.text(`PHONE: ${PHONE.value}`,14,36);
-    pdf.text(`EMAIL: ${EMAIL.value}`,14,43);
-
-    const rows=CART.map(i=>[
-        i.category,i.product,i.qty,"£"+i.price.toFixed(2),"£"+(i.qty*i.price).toFixed(2)
-    ]);
-
-    pdf.autoTable({
-        startY:50,
-        head:[["CATEGORY","PRODUCT","QTY","PRICE","TOTAL"]],
-        body:rows
-    });
-
-    let y=pdf.lastAutoTable.finalY+10;
-    pdf.text(`SUBTOTAL: £${SUB.innerText}`,14,y);
-    pdf.text(`VAT (20%): £${VAT.innerText}`,14,y+7);
-    pdf.text(`FINAL TOTAL: £${TOTAL.innerText}`,14,y+14);
-
-    pdf.save(`${INVOICE}.PDF`);
+// Remove from cart
+function removeFromCart(index) {
+  CART.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(CART));
+  render();
 }
 
-/* FULL DETAILS MESSAGE */
-function BUILDINVOICE(){
-    let text=`ZIA DISTRIBUTOR LTD ORDER\nINVOICE: ${INVOICE}\n\nCUSTOMER:\n${NAME.value}\n${PHONE.value}\n${EMAIL.value}\n\nITEMS:\n`;
-    CART.forEach(i=>{
-        text+=`${i.category} - ${i.product} (${i.qty}) £${(i.qty*i.price).toFixed(2)}\n`;
-    });
-    text+=`\nSUBTOTAL £${SUB.innerText}\nVAT £${VAT.innerText}\nFINAL TOTAL £${TOTAL.innerText}`;
-    return encodeURIComponent(text);
+// Build full invoice message for PDF / WhatsApp / Email
+function buildInvoiceText() {
+  let text = `ZIA DISTRIBUTOR LTD ORDER\nINVOICE: ${INVOICE}\n\nCUSTOMER DETAILS:\n`;
+  text += `Name: ${NAME.value}\nPhone: ${PHONE.value}\nEmail: ${EMAIL.value}\n\n`;
+  text += "ITEMS:\n";
+  CART.forEach(i => {
+    text += `${i.cat} - ${i.prod} (${i.qty}) £${(i.price * i.qty).toFixed(2)}\n`;
+  });
+  text += `\nSUBTOTAL: £${SUBTOTAL.innerText}\nVAT: £${VAT.innerText}\nFINAL TOTAL: £${TOTAL.innerText}`;
+  return text;
 }
 
-function SENDWHATSAPP(){
-    window.open(`https://wa.me/447404156629?text=${BUILDINVOICE()}`);
+// PDF download
+function GENERATEPDF() {
+  if (!CART.length) { alert("Cart is empty!"); return; }
+
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF();
+  pdf.text("ZIA DISTRIBUTOR LTD ORDER", 14, 15);
+  pdf.text(`INVOICE: ${INVOICE}`, 14, 22);
+  pdf.text(`NAME: ${NAME.value}`, 14, 29);
+  pdf.text(`PHONE: ${PHONE.value}`, 14, 36);
+  pdf.text(`EMAIL: ${EMAIL.value}`, 14, 43);
+
+  const rows = CART.map(i => [
+    i.cat, i.prod, i.qty, "£" + i.price.toFixed(2), "£" + (i.qty * i.price).toFixed(2)
+  ]);
+
+  pdf.autoTable({
+    startY: 50,
+    head: [["Category", "Product", "Qty", "Price", "Total"]],
+    body: rows
+  });
+
+  let y = pdf.lastAutoTable.finalY + 10;
+  pdf.text(`SUBTOTAL: £${SUBTOTAL.innerText}`, 14, y);
+  pdf.text(`VAT (20%): £${VAT.innerText}`, 14, y + 7);
+  pdf.text(`FINAL TOTAL: £${TOTAL.innerText}`, 14, y + 14);
+
+  pdf.save(`${INVOICE}.pdf`);
 }
 
-function SENDEMAIL(){
-    window.location=`mailto:ziap.distributor@gmail.com?subject=INVOICE ${INVOICE}&body=${BUILDINVOICE()}`;
+// WhatsApp
+function SENDWHATSAPP() {
+  if (!CART.length) { alert("Cart is empty!"); return; }
+  const msg = encodeURIComponent(buildInvoiceText());
+  window.open(`https://wa.me/447404156629?text=${msg}`);
 }
+
+// Email
+function SENDEMAIL() {
+  if (!CART.length) { alert("Cart is empty!"); return; }
+  const body = buildInvoiceText();
+  window.location.href = `mailto:ziap.distributor@gmail.com?subject=INVOICE ${INVOICE}&body=${encodeURIComponent(body)}`;
+}
+
+// Print
+function PRINT() {
+  if (!CART.length) { alert("Cart is empty!"); return; }
+  const printWindow = window.open('', '', 'height=600,width=800');
+  let html = `<h1>ZIA DISTRIBUTOR LTD ORDER</h1>`;
+  html += `<p>Invoice: ${INVOICE}</p>`;
+  html += `<p>Name: ${NAME.value}</p><p>Phone: ${PHONE.value}</p><p>Email: ${EMAIL.value}</p>`;
+  html += `<table border="1" cellpadding="5" cellspacing="0">
+    <tr><th>Category</th><th>Product</th><th>Qty</th><th>Price</th><th>Total</th></tr>`;
+  CART.forEach(i => {
+    html += `<tr>
+      <td>${i.cat}</td>
+      <td>${i.prod}</td>
+      <td>${i.qty}</td>
+      <td>£${i.price.toFixed(2)}</td>
+      <td>£${(i.qty*i.price).toFixed(2)}</td>
+    </tr>`;
+  });
+  html += `</table>`;
+  html += `<p>Subtotal: £${SUBTOTAL.innerText}</p>`;
+  html += `<p>VAT: £${VAT.innerText}</p>`;
+  html += `<h3>Total: £${TOTAL.innerText}</h3>`;
+  printWindow.document.write(html);
+  printWindow.document.close();
+  printWindow.print();
+}
+
+init();
